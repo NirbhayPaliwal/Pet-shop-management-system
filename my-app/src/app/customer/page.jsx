@@ -53,14 +53,6 @@ export default function BasicTable() {
     }
   };
 
-  const handleDelete = async (customerId) => {
-    try {
-      // Your delete logic here
-      console.log("Delete customer with ID:", customerId);
-    } catch (error) {
-      console.error("Error deleting customer:", error);
-    }
-  };
 
   return (
     <div className="mx-10 py-1 my-1">

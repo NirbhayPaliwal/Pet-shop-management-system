@@ -17,7 +17,7 @@ const TransactionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://pets-shop-management.onrender.com/api/transactions", {
+      const response = await fetch("http://localhost:5000/api/transactions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const TransactionForm = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        console.log("Transaction data submitted successfully!");
+        alert("Transaction data submitted successfully!");
         // Reset form fields
         setFormData({
           animalId: "",
@@ -34,10 +34,10 @@ const TransactionForm = () => {
           date: "",
         });
       } else {
-        console.error("Failed to submit transaction data");
+        alert("Failed to submit transaction data");
       }
     } catch (error) {
-      console.error("Error submitting transaction data:", error);
+      alert("Error submitting transaction data:", error);
     }
   };
 

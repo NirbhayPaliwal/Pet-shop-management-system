@@ -33,7 +33,7 @@ const AnimalForm = () => {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await fetch("https://pets-shop-management.onrender.com/api/animals", {
+      const response = await fetch("http://localhost:5000/api/animals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const AnimalForm = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        console.log("Animal data submitted successfully!");
+        alert("Animal data submitted successfully!");
         setFormData({
           type: "",
           breed: "",
@@ -53,10 +53,10 @@ const AnimalForm = () => {
           food_suitable: [],
         });
       } else {
-        console.error("Failed to submit animal data");
+        alert("Failed to submit animal data");
       }
     } catch (error) {
-      console.error("Error submitting animal data:", error);
+      alert("Error submitting animal data:", error);
     }
   };
 

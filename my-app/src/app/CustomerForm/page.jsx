@@ -25,7 +25,7 @@ const CustomerForm = () => {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await fetch("https://pets-shop-management.onrender.com/api/customers", {
+      const response = await fetch("http://localhost:5000/api/customers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const CustomerForm = () => {
       });
 
       if (response.ok) {
-        console.log("Customer data submitted successfully!");
+        alert("Customer data submitted successfully!");
         setFormData({
           name: "",
           numbers: [],
@@ -44,10 +44,10 @@ const CustomerForm = () => {
           customer_id: "",
         });
       } else {
-        console.error("Failed to submit customer data");
+        alert("Failed to submit customer data");
       }
     } catch (error) {
-      console.error("Error submitting customer data:", error);
+      alert("Error submitting customer data:", error);
     }
   };
 
