@@ -1,16 +1,15 @@
-'use client';
+"use client";
 import React, { useEffect, useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "./ui/navbar-menu";
 
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
-
+import { useRouter } from "next/navigation";
 
 function Navbar() {
   const [active, setActive] = useState(null);
   const [showNotifications, setShowNotifications] = useState(false);
   const [Rows, setRows] = useState([]);
-  const router = useRouter()
+  const router = useRouter();
 
   const toggleNotifications = () => {
     setShowNotifications((prevState) => !prevState);
@@ -23,20 +22,20 @@ function Navbar() {
           },
         });
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setRows(data.results);
         // console.log(Rows);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    }
+    };
     fetchData();
   };
 
   return (
     <div className="py-0">
-      <header class="text-gray-400 bg-gray-900 body-font ">
-        <div class="container mx-20 flex flex-wrap p-5 flex-row justify-center items-center">
+      <header className="text-gray-400 bg-gray-900 body-font ">
+        <div className="container mx-20 flex flex-wrap p-5 flex-row justify-center items-center">
           <div className="flex title-font mx-0 font-medium items-center text-white mb-4 md:mb-0">
             <a href="/" className="flex items-center">
               <Image
@@ -48,7 +47,7 @@ function Navbar() {
             </a>
             <HoveredLink href="/">.</HoveredLink>
           </div>
-          <nav class=" flex flex-wrap items-center mx-auto text-l justify-center">
+          <nav className=" flex flex-wrap items-center mx-auto text-l justify-center">
             <Menu>
               <div
                 onClick={() => {
@@ -58,39 +57,37 @@ function Navbar() {
               >
                 <MenuItem active={active} item="Animals">
                   <div className="flex flex-col  text-base">
-                    <HoveredLink href="/Animals">Animals</HoveredLink>
+                    {/* <HoveredLink href="/Animals">Animals</HoveredLink> */}
                   </div>
                 </MenuItem>
               </div>
               <div
                 onClick={() => {
-                  if (active == "Customer") setActive(null);
+                  if (active === "Customer") setActive(null);
                   else {
                     setActive("Customer");
-                    <HoveredLink href="/Customer">
-                      Customer details
-                    </HoveredLink>;
+                    // <HoveredLink href="/Customer">Customer details</HoveredLink>
                   }
                 }}
               >
                 <MenuItem active={active} item="Customer">
                   <div className="flex flex-col  text-base">
-                    <HoveredLink href="/Customer">Customer details</HoveredLink>
+                    {/* <HoveredLink href="/Customer">Customer details</HoveredLink> */}
                   </div>
                 </MenuItem>
               </div>
               <div
                 onClick={() => {
-                  if (active == "Sales") setActive(null);
+                  if (active === "Sales") setActive(null);
                   else {
-                    setActive("Sales");
-                    <HoveredLink href="/Sales">Sales Details</HoveredLink>;
-                  }                  
+                    // <HoveredLink href="/Sales">Sales Details</HoveredLink>
+                  }
+                  setActive("Sales");
                 }}
               >
                 <MenuItem active={active} item="Sales">
                   <div className="flex flex-col  text-base">
-                    <HoveredLink href="/Sales">Sales Details</HoveredLink>
+                    {/* <HoveredLink href="/Sales">Sales Details</HoveredLink> */}
                   </div>
                 </MenuItem>
               </div>
@@ -102,9 +99,7 @@ function Navbar() {
               >
                 <MenuItem active={active} item="Caretaker">
                   <div className="flex flex-col  text-base">
-                    <HoveredLink href="/Caretaker">
-                      Caretaker details
-                    </HoveredLink>
+                    {/* <HoveredLink href="/Caretaker">Caretaker details</HoveredLink> */}
                   </div>
                 </MenuItem>
               </div>
@@ -116,7 +111,7 @@ function Navbar() {
               >
                 <MenuItem active={active} item="Veiternary">
                   <div className="flex flex-col space-y-4 text-base">
-                    <HoveredLink href="/Veiternary">Veiternary</HoveredLink>
+                    {/* <HoveredLink href="/Veiternary">Veiternary</HoveredLink> */}
                   </div>
                 </MenuItem>
               </div>
@@ -132,16 +127,16 @@ function Navbar() {
               onClick={toggleNotifications}
             >
               <svg
-                class="w-5 h-5"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 14 20"
+                fill="blue"
+                viewBox="0 0 24 24"
+                style={{ width: "20px", height: "20px" }}
               >
-                <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                <path d="M12 24c1.104 0 2-.896 2-2h-4c0 1.104.896 2 2 2zm6.364-6.95c-.6-.624-1.364-1.154-1.364-5.05 0-3.48-2.17-6.429-5.364-7.462V3c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5v1.538C7.17 5.571 5 8.52 5 12c0 3.896-.764 4.426-1.364 5.05-.374.39-.636 1.194-.636 1.95h16c0-.756-.262-1.56-.636-1.95z" />
               </svg>
 
-              <div class="absolute block w-3 h-3 bg-blue-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900"></div>
+              <div className="absolute block w-3 h-3 bg-blue-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900"></div>
             </button>
 
             <div
@@ -155,15 +150,18 @@ function Navbar() {
                 Notifications
               </div>
               {Rows.map((row, index) => (
-                <div class="divide-y divide-gray-100 dark:divide-gray-700">
-                  <div class="w-full ps-3">
-                    <div class="text-gray-900 text-sm mb-1.5 dark:text-gray-400">
-                      <span class="font-semibold text-gray-900 dark:text-white">
+                <div
+                  key={row.pet_id}
+                  className="divide-y divide-gray-100 dark:divide-gray-700"
+                >
+                  <div className="w-full ps-3">
+                    <div className="text-gray-900 text-sm mb-1.5 dark:text-gray-400">
+                      <span className="font-semibold text-gray-900 dark:text-white">
                         Pet-id:{row.pet_id}
                       </span>
                       : {row.work}
                     </div>
-                    <div class="text-xs text-blue-600 dark:text-blue-500">
+                    <div className="text-xs text-blue-600 dark:text-blue-500">
                       a few moments ago
                     </div>
                   </div>
