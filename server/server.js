@@ -211,7 +211,6 @@ app.post("/api/customers", (req, res) => {
 
 app.post("/api/animals", (req, res) => {
   const { type, breed, weight, age ,id,gender,sold} = req.body;
-  console.log('hi');
   if (!type || !breed || !weight || !age || !id || !gender) {
     return res.status(400).json({ error: "Missing required fields" });
   }

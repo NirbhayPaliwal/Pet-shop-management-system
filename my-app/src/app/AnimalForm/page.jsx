@@ -10,13 +10,12 @@ const AnimalForm = () => {
     id: "",
     gender: "male",
     sold: 0,
-    food_suitable: [], // Corrected attribute name
+    food_suitable: [],
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "food_suitable") {
-      // Split the input value by commas and trim spaces
       const foodArray = value.split(",").map((item) => item.trim());
       setFormData({ ...formData, [name]: foodArray });
     } else {
@@ -32,7 +31,6 @@ const AnimalForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData);
       const response = await fetch("http://localhost:5000/api/animals", {
         method: "POST",
         headers: {
